@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palmas TO 360° - Giroscópio</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    
+    <style>
+        /* Estilo para garantir que o visualizador ocupe toda a tela */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Remove barras de rolagem desnecessárias */
+            font-family: Arial, sans-serif;
+        }
+        #panorama {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="panorama"></div>
+
+    <script>
+        // URL de uma imagem 360° de Palmas TO para demonstração.
+        // **IMPORTANTE**: Substitua este link pela URL da sua própria imagem panorâmica (formato equirretangular).
+        const IMAGEM_DE_PALMAS_360 = 'https://i.imgur.com/v8tT11Y.jpeg'; // Exemplo de imagem 360° genérica (substitua!)
+
+        // Configuração do visualizador Pannellum
+        pannellum.viewer('panorama', {
+            "type": "equirectangular",
+            "panorama": IMAGEM_DE_PALMAS_360,
+            "autoLoad": true, // Carrega a imagem automaticamente
+            "autoRotate": -2, // Rotação automática suave (-2 graus por segundo)
+            "compass": true, // Mostra a bússola (ajuda na orientação)
+            "showZoom": true, // Mostra controles de zoom
+            
+            // --- Configurações de Giroscópio (Celular) ---
+            "yaw": 180, // Ponto de vista inicial (em graus)
+            "northOffset": 0, // Ajuste de orientação, se necessário
+            "orientationOnByDefault": true, // **Ativa o giroscópio (orientação) por padrão no celular**
+            "deviceOrientation": true, // Permite o uso do sensor de giroscópio/movimento
+            "maxPitch": 90, // Limita a visão máxima para cima
+            "minPitch": -90 // Limita a visão máxima para baixo
+        });
+    </script>
+
+    </body>
+</html>
