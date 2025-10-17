@@ -1,54 +1,74 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html>
+  <head>
+    <title>Praça dos Girassóis - Imersivo 360 (Com Movimento)</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palmas TO 360° - Giroscópio</title>
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"/>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    
-    <style>
-        /* Estilo para garantir que o visualizador ocupe toda a tela */
-        html, body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden; /* Remove barras de rolagem desnecessárias */
-            font-family: Arial, sans-serif;
-        }
-        #panorama {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-</head>
-<body>
+    <meta name="description" content="Experiência imersiva 360° sobre a Praça dos Girassóis em Palmas-TO.">
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="praca-360" src="https://i.imgur.com/7VCZ8Q8.jpeg">
+      </a-assets>
 
-    <div id="panorama"></div>
+      <a-sky src="#praca-360" rotation="0 -110 0"></a-sky>
 
-    <script>
-        // URL de uma imagem 360° de Palmas TO para demonstração.
-        // **IMPORTANTE**: Substitua este link pela URL da sua própria imagem panorâmica (formato equirretangular).
-        const IMAGEM_DE_PALMAS_360 = 'https://i.imgur.com/7VCZ8Q8.jpeg'; // Exemplo de imagem 360° genérica (substitua!)
+      <a-troika-text
+        value="Praça dos Girassóis - Palmas, TO"
+        color="#FFCC00"  /* Amarelo Girassol */
+        align="center"
+        font-size="0.4"
+        anchor="center"
+        position="0 2.8 -4"
+        outline-color="#000000"
+        outline-width="2%">
+      </a-troika-text>
 
-        // Configuração do visualizador Pannellum
-        pannellum.viewer('panorama', {
-            "type": "equirectangular",
-            "panorama": IMAGEM_DE_PALMAS_360,
-            "autoLoad": true, // Carrega a imagem automaticamente
-            "autoRotate": -2, // Rotação automática suave (-2 graus por segundo)
-            "compass": true, // Mostra a bússola (ajuda na orientação)
-            "showZoom": true, // Mostra controles de zoom
-            
-            // --- Configurações de Giroscópio (Celular) ---
-            "yaw": 180, // Ponto de vista inicial (em graus)
-            "northOffset": 0, // Ajuste de orientação, se necessário
-            "orientationOnByDefault": true, // **Ativa o giroscópio (orientação) por padrão no celular**
-            "deviceOrientation": true, // Permite o uso do sensor de giroscópio/movimento
-            "maxPitch": 90, // Limita a visão máxima para cima
-            "minPitch": -90 // Limita a visão máxima para baixo
-        });
-    </script>
+      <a-entity class="panel" position="0 1.6 -4" rotation="0 0 0">
+        <a-entity geometry="primitive: plane; width: 3.5; height: 1.8" material="color: #001f3f; opacity: 0.85; transparent: true;"></a-entity>
+        <a-troika-text
+          value="A Rosa dos Ventos e o Centro Geodésico"
+          color="#FFCC00" align="center" font-size="0.2" anchor="center"
+          position="0 0.6 0.1">
+        </a-troika-text>
+        <a-troika-text
+          value="O marco central da praça, a Rosa dos Ventos, é considerado o centro geodésico do Brasil. Representa o ponto de equilíbrio do território nacional."
+          color="#EFEFEF" align="center" font-size="0.1" anchor="center" max-width="3"
+          position="0 0.05 0.1">
+        </a-troika-text>
+      </a-entity>
 
-    </body>
+      <a-entity class="panel" position="4 1.6 0" rotation="0 -90 0">
+        <a-entity geometry="primitive: plane; width: 3.5; height: 1.8" material="color: #001f3f; opacity: 0.85; transparent: true;"></a-entity>
+         <a-troika-text
+          value="Os Três Poderes Estaduais"
+          color="#FFCC00" align="center" font-size="0.2" anchor="center"
+          position="0 0.6 0.1">
+        </a-troika-text>
+        <a-troika-text
+          value="A praça abriga os palácios Araguaia (Executivo), João de Jesus Santana (Legislativo) e o Tribunal de Justiça (Judiciário), formando o centro político do Tocantins."
+          color="#EFEFEF" align="center" font-size="0.1" anchor="center" max-width="3"
+          position="0 0.05 0.1">
+        </a-troika-text>
+      </a-entity>
+
+      <a-entity class="panel" position="-4 1.6 0" rotation="0 90 0">
+        <a-entity geometry="primitive: plane; width: 3.5; height: 1.8" material="color: #001f3f; opacity: 0.85; transparent: true;"></a-entity>
+        <a-troika-text
+          value="Monumentos e Cultura Tocantinense"
+          color="#FFCC00" align="center" font-size="0.2" anchor="center"
+          position="0 0.6 0.1">
+        </a-troika-text>
+        <a-troika-text
+          value="No entorno, encontramos marcos como o Relógio do Sol, a Fonte Luminosa, e o Cruzeiro. O local é palco de grandes eventos culturais e cívicos de Palmas."
+          color="#EFEFEF" align="center" font-size="0.1" anchor="center" max-width="3"
+          position="0 0.05 0.1">
+        </a-troika-text>
+      </a-entity>
+
+      <a-camera></a-camera>
+    </a-scene>
+  </body>
 </html>
